@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block head %}
+    <meta name="Description" content="Welcome to my personal coded">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/post.css')}}">
+    <link rel="manifest" href="{{url_for('static', filename='/manifest.json')}}">
+    <title>Astok Blog | {{title}}</title>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="page-overlay d-none"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <a class="navbar-brand" href="/">Astok</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link nav-text" href="/">Home</a>
+            <a class="nav-item nav-link nav-text" href="/create">Post</a>
+            <a class="nav-item nav-link nav-text mr-1" href="/explore">Explore</a>
+            <div class="nav-item nav-separator mx-2"></div>
+            
+            {% if is_logged %}
+
+            <li class="nav-item dropdown mr-4 user-dropdown">
+                <a class="nav-link dropdown-toggle user-icon" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.name[0].upper()}}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">{{user.name.capitalize()}}</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Account</a>
+                  <a class="dropdown-item" href="/log-out">Log out</a>
+                </div>
+              </li>
+            {% endif %}
+            
+            {% if not is_logged%}
+                <a class="nav-item nav-link nav-text ml-1 sign-in-btn" href="#">Sign in</a>
+                <a class="nav-item nav-link btn--s btn--primary sign-up-btn ml-2" href="#">Sign up</a>
+            {% endif %}
+
+        </div>
+        </div>
+    </nav>
+
+    <div class="content container">
+        <div class="mt-5">
+            <h2 class="heading-title-h2">{{title}}</h2>
+            <p class="m-0 small">By <b>{{name}}</b> - {{post_date}}</p>
+            <hr>
+            {{content | safe}}
+        </div>
+    </div>
+
+    <!-- Main -->
+
+
+
+    <script src="{{url_for('static', filename='scripts/post.js')}}"></script>
+
+{% endblock %}

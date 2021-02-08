@@ -1,0 +1,18 @@
+{
+    "name": "Astok Blog",
+    "short_name": "Astok",
+    "start_url": "/",
+    "Scope": "/",
+    "display": "standalone",
+    "theme_color": "#0069ff",
+    "orientation": "any",
+    "background_color": "#fff",
+    "description": "My personal blog ",
+    "icons": [
+      {
+        "src": "icons/icon_512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

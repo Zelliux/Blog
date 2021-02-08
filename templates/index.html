@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block head %}
+    <meta name="Description" content="Welcome to my personal coded">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="manifest" href="{{url_for('static', filename='/manifest.json')}}">
+    <title>Astok Blog</title>
+{% endblock %}
+
+{% block body %}
+
+    <div class="page-overlay d-none"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <a class="navbar-brand" href="#">Astok</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link nav-text" href="/create">Post</a>
+            <a class="nav-item nav-link nav-text mr-1" href="/explore">Explore</a>
+            <div class="nav-item nav-separator mx-2"></div>
+            
+            {% if is_logged %}
+
+            <li class="nav-item dropdown mr-4 user-dropdown">
+                <a class="nav-link dropdown-toggle user-icon" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.name[0].upper()}}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">{{user.name.capitalize()}}</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Account</a>
+                  <a class="dropdown-item" href="/log-out">Log out</a>
+                </div>
+              </li>
+            {% endif %}
+            
+            {% if not is_logged%}
+                <a class="nav-item nav-link nav-text ml-1 sign-in-btn pop-sign-in-modal" href="#">Sign in</a>
+                <a class="nav-item nav-link btn--s btn--primary sign-up-btn ml-2 pop-sign-up-modal" href="#">Sign up</a>
+            {% endif %}
+
+        </div>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <div class="home-container container mt-5">
+        <div class="row m-0">
+            <div class= "home-col">
+                <h1 class="heading-title mx-auto">Welcome to my personal blog!</h1>
+                <p class="mx-auto">The creative power of posts resides in here! Feel free to check some.</p>
+                
+                <div class="home-text-btns mx-auto">
+                    <a href="/create" class="btn btn--primary btn--m">Create</a>
+                    <a href="/recent" class="btn btn--secondary btn--m mt-2">Explore latest posts</a>
+                </div>
+            </div>
+            <div class="col-md-5 ml-auto pr-0 illustration-col">
+                <div class="home-illustration">
+                    <img src="{{url_for('static', filename='media/images/home-illustration.svg')}}" draggable="false">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Sign Up modal -->
+    <form action="/sign-up" class="modal-form modal-form-sign-up hide d-none", method="POST">
+        <div class="form-group">
+            <a class="close-modal-form" href="#">×</a>
+            <h2 class="modal-form-title">Join Astok</h2>
+            <p class="modal-form-subtitle">Sign up to comment and post!</p>
+            <div class="input-icon-container">
+                <input type="text" name="sign-up-name" class="form-control input input--m input--m--icon" id="sign-up-name" aria-describedby="nameHelp" placeholder="Name" required>
+                <i class="far fa-user input-icon"></i>
+            </div>
+        </div>    
+        <div class="form-group">
+            <div class="input-icon-container">
+                <input type="email" name="sign-up-email" class="form-control input input--m input--m--icon" id="sign-up-email" aria-describedby="emailHelp" placeholder="Email" required>
+                <i class="far fa-envelope input-icon"></i>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-icon-container">
+                <input type="password" name="sign-up-password" class="form-control input input--m input--m--icon input--error" id="sign-up-password" placeholder="Password">
+                <span class="show-password-btn">Show</span>
+                <i class="fas fa-lock input-icon"></i>
+            </div>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" name="customCheck" id="checkbox-form" required>
+            <label class="custom-control-label terms-text" for="checkbox-form">I agree to your Terms and Conditions and Privacy Policy</label>
+        </div>
+        <button type="submit" class="btn btn--primary btn--m w-100 mt-5">Create your free account</button>
+
+        <div class="modal-footer mt-5 pb-1 text-center">
+            <p class="modal-footer-text mb-0">Already registered? <a href="#" class="modal-footer-text sign-in-modal pop-sign-in-modal">Sign in</a></p>
+        </div>
+    </form>
+
+
+    <!-- Sign In modal -->
+    <form action="/sign-in" class="modal-form modal-form-sign-in hide d-none", method="POST">
+        <div class="form-group">
+            <a class="close-modal-form" href="#">×</a>
+            <h2 class="modal-form-title">Hello!</h2>
+            <p class="modal-form-subtitle">Sign into your account here.</p>
+            <div class="input-icon-container">
+                <input type="email" name="sign-in-email" class="form-control input input--m input--m--icon" id="sign-in-email" aria-describedby="emailHelp" placeholder="Email" required>
+                <i class="far fa-envelope input-icon"></i>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-icon-container">
+                <input type="password" name="sign-in-password" class="form-control input input--m input--m--icon" id="sign-in-password" placeholder="Password" required>
+                <span class="show-password-btn">Show</span>
+                <i class="fas fa-lock input-icon"></i>
+            </div>
+        </div>
+        <button type="submit" class="btn btn--primary btn--m w-100 mt-1">Sign in</button>
+
+        <div class="modal-footer mt-5 pb-1 text-center">
+            <p class="modal-footer-text mb-1">Forgot password? <a href="/reset-password" class="modal-footer-text">Reset</a></p>
+            <p class="modal-footer-text mb-0">Don't have an account? <a href="#" class="modal-footer-text sign-up-modal pop-sign-up-modal">Sign up</a></p>
+        </div>
+    </form>
+
+    <div class="error-pop-up d-none">
+        <p class="pop-up-text">The password must be 6 chars in length</p>
+    </div>
+
+    <script type="text/javascript">
+
+        const error = '{{error if error else ""}}'
+        const error_message = '{{error_message if error_message and error else ""}}'
+        const modal = '{{modal if modal else ""}}'
+
+    </script>
+    <script src="{{url_for('static', filename='scripts/index.js')}}"></script>
+{% endblock %}

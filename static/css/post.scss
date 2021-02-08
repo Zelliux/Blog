@@ -1,0 +1,31 @@
+body {
+    overflow: hidden;
+}
+
+.content {
+    max-width: 80%;
+
+    margin-left: auto!important;
+    margin-right: auto!important;
+
+    & img {
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    figcaption {
+        font-size: .6rem !important;
+        text-align: center;
+    }
+
+}
+
+@media (min-width: 1900px) {
+    .content {
+        max-width: 50%;
+    }
+
+    .heading-title {
+        font-size: 50px !important;
+    }
+}

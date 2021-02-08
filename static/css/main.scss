@@ -1,0 +1,287 @@
+// MAIN CSS FILE
+// IMPORTANT CHANGES FOR DIFFERENT TEMPLATES CAN BE FOUND IN HERE
+
+
+// fonts 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400 !important;
+}
+
+.link {
+    color: #007bff !important;
+    text-decoration: none !important;
+}
+
+// NAVBAR 
+
+.btn--primary {
+    background: #06f;
+    color: #fff !important;
+    font-weight: 600;
+    
+    &:hover {
+        background-color: #005ce6;
+        color: #fff;
+    }
+    
+}
+
+.btn--secondary {
+    font-weight: 600;
+    color: #000;
+    box-shadow: inset rgba(0,0,0,.15) 0 0 0 1px;
+    background: 0 0;
+
+    &:hover {
+        box-shadow: inset rgba(0,0,0,.3) 0 0 0 1px;
+    }
+}
+
+.btn--m {
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 12px 21px;
+    width: 240px;
+}
+
+.btn--s {
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 5px 12px !important;
+    height: 34px;
+}
+
+.dropdown .dropdown-menu {
+    border-radius: 15px;
+    padding: 8px;
+    font-size: 13px;
+    margin-top: 5px;
+
+    &::before {
+        content: '';
+        border: 6px solid #fff;
+        filter: drop-shadow(0 -2px 0px rgba(0,0,0,.15));
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-left-color: transparent;
+        position: absolute;
+        transform: translateY(-19px);
+        right: 7%;
+    }
+    
+    & .dropdown-item:hover {
+        border-radius: 5px ;
+        background-color: #f3f3f3;
+    }
+
+    & .dropdown-item:focus {
+        background-color: #eef4f5;
+        color: #000;
+    }
+    
+    a:first-child {
+        border-radius: 10px 10px 5px 5px !important;
+    }
+
+    a:last-child {
+        border-radius: 5px 5px 15px 15px !important;
+    }
+}
+
+.navbar {
+    border-bottom: 1px solid rgba($color: #000, $alpha: .11);
+
+    .nav-text {
+        color: #646369 !important;
+        font-size: .95em;
+
+        &:hover{
+            color: #000 !important;
+        }
+    }
+    
+    .nav-separator {
+        height: 30px;
+        margin-top: 5px;
+        background-color: #dfdfdf;
+        width: 1px;
+    }
+
+    .sign-up-btn {
+        margin-top: 2px !important;
+        color: #fff;
+        font-size: .95em;
+    }
+    
+    .user-icon {
+        $user-icon-color: rgb(185, 255, 182);
+
+        background-color:$user-icon-color;
+        color: darken($color: $user-icon-color, $amount: 50);
+        border: 1px solid rgb(146, 211, 144);
+        border-radius: 50px !important;
+        font-weight: bold;
+        text-align: center;
+        padding: 5px !important;
+        height: 35px;
+        width: 35px;
+        font-size: 14px;
+
+        &::after {
+            font-family: "Font Awesome 5 Free";
+            content: '\f078' !important;
+            border-top: none !important;
+            position: absolute;
+            transform: translateX(20px) translateY(4px);
+        } 
+    }
+
+        
+}
+
+@media (max-width:991px) {
+
+    .navbar {
+        box-shadow: 0 11px 20px 0px #46454915;
+    }
+
+    .nav-separator {
+        height: 1px !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .sign-up-btn {
+        width: 80px;
+        margin-left: 0 !important;
+        margin-bottom: 10px;
+    }
+
+    .dropdown-menu {
+        margin-top: 15px;
+    }
+
+    .dropdown-menu::before {
+        left: 20px !important;
+        right: initial !important;
+    }
+    
+}
+
+
+// Texts & links
+.heading-title {
+    font-size: 60px;
+    line-height: 1.1em;
+    letter-spacing: -.035em;
+    font-weight: 800;
+    max-width: 80%;
+    min-width: 50%;
+    color: #000 !important;
+}
+
+.heading-title-h2 {
+    font-size: 40px;
+    line-height: 1.1em;
+    letter-spacing: -.035em;
+    font-weight: 800;
+    max-width: 80%;
+    min-width: 50%;
+    color: rgb(43, 43, 43) !important;
+}
+
+// Forms
+
+.input {
+    font-family: 'Inter', sans-serif !important;
+    width: 100%;
+
+    &::placeholder {
+        color: #a8adb3;
+    }
+}
+
+.input--m {
+    border-radius: 10px;
+    height: 46px;
+    padding-left: 20px;
+    line-height: 46px;
+    font-size: 15px;
+    transition: all .1s ease-in;
+    
+    &:hover {
+        border-color: #a8adb3;
+    }
+
+    &:focus {
+        border-color: #06f;
+        box-shadow: none !important;
+    }
+
+}
+
+.input--m--icon {
+
+    padding: 0 75px 0 45px;
+    
+    &:focus ~ .input-icon  {
+        color: #06f !important;
+    }
+
+    &:hover ~ .input-icon {
+        color: #7d7c83;
+    }
+    
+}
+
+// post (textarea)
+.tox-tinymce {
+    font-family: 'Inter', sans-serif !important;
+
+    border-radius: 10px !important;
+    
+    & .tox-menubar button:first-child {
+        border-top-left-radius: 10px;
+    }
+}
+
+.round-icon {
+    color: rgb(109, 109, 109);
+    background-color: rgb(221, 221, 221);
+    margin: 0 5px 0 5px;
+    border-radius: 50px;
+    padding: 9px;
+
+}
+
+.input-icon {
+    position: absolute;
+    transform: translateY(-32px) translateX(18px);
+    font-size: 1.1em;
+    color: #a8adb3;
+    transition: all .1s ease-in;
+}
+
+
+.show-password-btn {
+    position: absolute;
+    font-weight: 600;
+    font-size: .9em;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 5px 10px;
+    right: 8%;
+    transform: translateY(-39.5px);
+    transition: all .1s ease-in;
+    cursor: pointer;
+
+    &:hover {
+        border-color: #a8adb3;
+    }
+
+}
